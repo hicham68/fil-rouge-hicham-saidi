@@ -1,0 +1,44 @@
+.conteneurJoueurs {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-around;
+}
+body {
+    background-image: url(https://s1.1zoom.me/b7068/853/Basketball_Ball_565959_1920x1080.jpg);
+    background-attachment: fixed;
+}
+.divPage2 {
+    background-color: rgb(255,228,196,0.6); ;
+    width: 740px;  
+    margin: auto;
+    height: auto;
+}
+h1 {
+    text-align: center;
+    text-decoration : underline;
+}
+h2 {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 1280px)
+{
+h2 {
+    text-align: center;
+
+}
+.divPage2 {
+    width: 70%; 
+    height: 70%;
+}
+
+}
+.imageEquipe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+hr {
+    border: 5px solid black;
+}

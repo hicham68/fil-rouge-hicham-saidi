@@ -1,0 +1,40 @@
+h1 {
+    font-size: 50px;
+    text-decoration : underline;
+}
+.teamName {
+    text-align: center;
+    display: block;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.linkPage2 {
+    font-size: 20px;
+}
+.divPage1 {
+        background-color: bisque;
+        width: 80%;
+        margin: auto;
+        background: rgba( 255, 228, 196, 0.7 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 5px );
+        -webkit-backdrop-filter: blur( 5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+    
+
+}
+body {
+    
+    background-image: url(https://s1.1zoom.me/b7068/853/Basketball_Ball_565959_1920x1080.jpg);
+    background-attachment: fixed;
+}
+h2 {
+    font-size: 40px;
+    text-decoration: underline red;
+}
+img {
+    width: 400px;
+    height: 400px;
+}
