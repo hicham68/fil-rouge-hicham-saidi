@@ -20,7 +20,7 @@ $equipes = json_decode($json); // decode un fichier string JSON en tableau d'obj
     </header> 
     <?php
     foreach ($equipes as $equipe) {   
-        // mise a jours 5?>
+        // mise a jours 6?>
             <div class="teamName">
             <h2> <?php echo $equipe->nom; ?> :</h2> 
                 <img src="<?php echo $equipe->logo; ?>"/>
