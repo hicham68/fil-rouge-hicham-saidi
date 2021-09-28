@@ -26,7 +26,7 @@ $equipes = json_decode($json); // decode un fichier string JSON en tableau d'obj
                 <p> <strong> Localisation : <?php echo $equipe->localisations; ?><br>
                      Division :<?php echo $equipe->division ?> <br>
                     Date de création :<?php echo $equipe->creation ?> <br>
-                    Couleurs de maillots : <?php foreach($equipe->couleurs as $couleur){ echo $couleur." ";} ?> </strong></p> 
+                    Couleurs des maillots : <?php foreach($equipe->couleurs as $couleur){ echo $couleur." ";} ?> </strong></p> 
                 
 
                
