@@ -9,10 +9,11 @@ body {
     background-attachment: fixed;
 }
 .divPage2 {
-    background-color: rgb(255,228,196,0.6); ;
+    background-color: rgb(255,228,196,0.6);
     width: 740px;  
     margin: auto;
     height: auto;
+    overflow: hidden;
 }
 h1 {
     text-align: center;
