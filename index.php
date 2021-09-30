@@ -43,8 +43,8 @@ $totalPlayerByTeam = 0 ;
         <?php
         foreach ($equipes as $equipe) {  ?>
             <div>
-                <h2> <?php echo htmlspecialchars($equipe->nom); ?> :</h2>
-                <img class="imageEquipe" src="<?php echo htmlspecialchars($equipe->logo); ?>" width="100px" height="100px" />
+                <h2> <?php echo htmlspecialchars(strip_tags($equipe->nom)); ?> :</h2>
+                <img class="imageEquipe" src="<?php echo htmlspecialchars(strip_tags($equipe->logo)); ?>" width="100px" height="100px" />
                 
             <div class='conteneurJoueurs'>
 
@@ -56,11 +56,11 @@ $totalPlayerByTeam = 0 ;
                 
                     
                         <div class='element'><img src='https://cdn-icons-png.flaticon.com/512/2468/2468023.png' title='2' width="50px" height="50px" alt='<?php echo $joueur->nom  ?>'>
-                            <p> <strong> <?php echo htmlspecialchars($joueur->nom); ?> </strong>  <br>
-                                poids : <?php echo htmlspecialchars($joueur->poid); ?> kg <br>
-                                taille :<?php echo htmlspecialchars($joueur->taille);  ?> m <br>
-                                numéro : <?php echo htmlspecialchars($joueur->No);  ?> <br>
-                                poste : <?php echo  htmlspecialchars($joueur->position);  ?></p>
+                            <p> <strong> <?php echo  htmlspecialchars(strip_tags($joueur->nom)); ?> </strong>  <br>
+                                poids : <?php echo htmlspecialchars(strip_tags($joueur->poid)); ?> kg <br>
+                                taille :<?php echo htmlspecialchars(strip_tags($joueur->taille));  ?> m <br>
+                                numéro : <?php echo htmlspecialchars(strip_tags($joueur->No));  ?> <br>
+                                poste : <?php echo  htmlspecialchars(strip_tags($joueur->position));  ?></p>
                         </div>
                    
                 <?php
@@ -69,7 +69,7 @@ $totalPlayerByTeam = 0 ;
             }  
 
             if($totalPlayerByTeam == 0){?>
-               <?php echo htmlspecialchars("Aucun joueur enregistré pour cette équipe  dans l'api") ?> 
+               <?php echo htmlspecialchars(strip_tags("Aucun joueur enregistré pour cette équipe  dans l'api")) ?> 
             <?php }
             $totalPlayerByTeam = 0;
             ?> 
