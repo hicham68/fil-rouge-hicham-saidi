@@ -1,25 +1,28 @@
-CREATE DATABASE basketDB;
-CREATE TABLE Joueurs (
-    JoueurID int NOT NULL,
-    JoueurName varchar(255) NOT NULL,
-    JoueurNo int NOT NULL,
-    Equipe int NOT NULL,
-    Taille float NOT NULL,
-    Poids int NOT NULL,
-    PRIMARY KEY (JoueurID),
-    FOREIGN KEY (Equipe) REFERENCES Equipes(EquipeID)
-);
-CREATE TABLE Equipes (
-    EquipeID int NOT NULL,
-    EquipeName varchar(255) NOT NULL,
-    EquipeLocalisation varchar(255) NOT NULL,
-    EquipeDivision varchar(255) NOT NULL,
-    EquipeColors varchar(255) NOT NULL,
-    EquipeLogo varchar(255) NOT NULL,
-    PRIMARY KEY (EquipeID),
-    FOREIGN KEY (EquipeColors)
-);
-CREATE TABLE Colors (
-  Colors varchar(255) NOT NULL,
+-- CREATE DATABASE basketDB;
 
+CREATE TABLE Equipes(
+    EquipeID INT NOT NULL,
+    EquipeName VARCHAR(255) NOT NULL,
+    EquipeLocalisation VARCHAR(255) NOT NULL,
+    EquipeDivision VARCHAR(255) NOT NULL,
+    EquipeColors VARCHAR(255) NOT NULL,
+    EquipeLogo VARCHAR(255) NOT NULL,
+    PRIMARY KEY(EquipeID)
 );
+
+
+CREATE TABLE Joueurs(
+    JoueurID INT NOT NULL,
+    JoueurName VARCHAR(255) NOT NULL,
+    JoueurNo INT NOT NULL,
+    Equipe INT NOT NULL,
+    Taille FLOAT NOT NULL,
+    Poids INT NOT NULL,
+    PRIMARY KEY(JoueurID),
+    FOREIGN KEY(Equipe) REFERENCES Equipes(EquipeID)
+); 
+
+ALTER TABLE Equipes ENGINE=InnoDB;
+ALTER TABLE Joueurs ENGINE=InnoDB;
+
+CREATE TABLE Colors(Colors VARCHAR(255) NOT NULL);
