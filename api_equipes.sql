@@ -1,27 +1,26 @@
-
 -- On supprime la DB si elle existe avant de la créer
-DROP DATABASE IF EXISTS dbbasket;
+DROP DATABASE IF EXISTS basketdb;
 
 -- Création de la base de données
-CREATE DATABASE dbbasket;
+CREATE DATABASE basketdb;
 
-USE dbbasket;
+USE basketdb;
 
 -- Création de la table equipes
 CREATE TABLE equipes (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(255) UNIQUE,
-    localisation VARCHAR(255),
-    division VARCHAR(255),
+    nom VARCHAR(400) UNIQUE,
+    localisation VARCHAR(400),
+    division VARCHAR(400),
     creation INT(11),
-    logo VARCHAR(255)
+    logo VARCHAR(400)
 );
 
 CREATE TABLE joueurs (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(255) UNIQUE,
-    position VARCHAR(255),
-    numero VARCHAR(255),
+    nom VARCHAR(400) UNIQUE,
+    position VARCHAR(400),
+    numero VARCHAR(400),
     equipe INT,
     taille FLOAT,
     poid INT(11)
@@ -29,7 +28,7 @@ CREATE TABLE joueurs (
 
 CREATE TABLE couleurs (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    couleur VARCHAR(255) NOT NULL UNIQUE
+    couleur VARCHAR(400) NOT NULL UNIQUE
 );
 
 CREATE TABLE couleur_equipe (
@@ -46,9 +45,16 @@ ALTER TABLE couleurs AUTO_INCREMENT = 1;
 ALTER TABLE couleur_equipe ADD PRIMARY KEY (id_couleur,id_equipe);
 
 -- On gère les clés étrangères des tables 
-ALTER TABLE joueurs 
--- On gère les clés étrangères des tables 
+
+ALTER TABLE joueurs
+ADD FOREIGN KEY (equipe) REFERENCES equipes(id);
+
+ALTER TABLE couleur_equipe 
+ADD FOREIGN KEY (id_couleur) REFERENCES couleurs(id);
+
+ALTER TABLE couleur_equipe 
 ADD FOREIGN KEY (id_equipe) REFERENCES equipes(id);
+
 
 -- On ajoute les valeurs
 INSERT INTO equipes(nom,localisation,division,creation,logo) VALUES
@@ -87,7 +93,7 @@ INSERT INTO couleurs(couleur) VALUES
 ("rouge"),
 ("jaune"),
 ("bleu marine"),
-("bleu roi"),AUTO_INCREMENT,
+("bleu roi"),
 ("argent");
 
 INSERT INTO couleur_equipe(id_equipe,id_couleur) VALUES 
