@@ -11,17 +11,23 @@
 </head>
 
 <?php
+require_once("./migration/migration.php");
+require_once("./api/Database.php");
+
+$connexion= DataBase::createMigration($SQL);
+
 // DECLARATION DES VARIABLES
 
-$url = "https://filrouge.uha4point0.fr/basketball/joueurs"; /// url de l'api 
-$json = file_get_contents($url); //
-$joueurs = json_decode($json); // decode un fichier string JSON en tableau d'objet PHP
-
-
-$url = "https://filrouge.uha4point0.fr/basketball/equipes"; /// url de l'api 
-$json = file_get_contents($url); //
-$equipes = json_decode($json); // decode un fichier string JSON en tableau d'objet PHP
+$joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/joueurs")); // decode un fichier string JSON en tableau d'objet PHP
+$equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); // decode un fichier string JSON en tableau d'objet PHP
 // var_dump($equipes);
+
+
+$insertData = DataBase::insertData($joueurs,$equipes);
+$equipes = DataBase::getTeams();
+$joueurs= DataBase::getAllPlayer();
+// var_dump($equipes);
+
 $totalPlayerByTeam = 0 ;
    
 ?>
@@ -43,24 +49,24 @@ $totalPlayerByTeam = 0 ;
         <?php
         foreach ($equipes as $equipe) {  ?>
             <div>
-                <h2> <?php echo htmlspecialchars(strip_tags($equipe->nom)); ?> :</h2>
-                <img class="imageEquipe" src="<?php echo htmlspecialchars(strip_tags($equipe->logo)); ?>" width="100px" height="100px" />
+                <h2> <?php echo htmlspecialchars(strip_tags($equipe["nom"])); ?> :</h2>
+                <img class="imageEquipe" src="<?php echo htmlspecialchars(strip_tags($equipe["logo"])); ?>" width="100px" height="100px" />
                 
             <div class='conteneurJoueurs'>
 
             <?php foreach ($joueurs as $joueur){
 
-            if($joueur->equipe == $equipe->id ){ 
+            if($joueur['equipe'] == $equipe["id"] ){ 
                 $totalPlayerByTeam ++;
                 ?>
                 
                     
-                        <div class='element'><img src='https://cdn-icons-png.flaticon.com/512/2468/2468023.png' title='2' width="50px" height="50px" alt='<?php echo $joueur->nom  ?>'>
-                            <p> <strong> <?php echo  htmlspecialchars(strip_tags($joueur->nom)); ?> </strong>  <br>
-                                poids : <?php echo htmlspecialchars(strip_tags($joueur->poid)); ?> kg <br>
-                                taille :<?php echo htmlspecialchars(strip_tags($joueur->taille));  ?> m <br>
-                                numéro : <?php echo htmlspecialchars(strip_tags($joueur->No));  ?> <br>
-                                poste : <?php echo  htmlspecialchars(strip_tags($joueur->position));  ?></p>
+                        <div class='element'><img src='https://cdn-icons-png.flaticon.com/512/2468/2468023.png' title='2' width="50px" height="50px" alt='<?php echo $joueur['nom']  ?>'>
+                            <p> <strong> <?php echo  htmlspecialchars(strip_tags($joueur['nom'])); ?> </strong>  <br>
+                                poids : <?php echo htmlspecialchars(strip_tags($joueur['poid'])); ?> kg <br>
+                                taille :<?php echo htmlspecialchars(strip_tags($joueur['taille']));  ?> m <br>
+                                numéro : <?php echo htmlspecialchars(strip_tags($joueur['numero']));  ?> <br>
+                                poste : <?php echo  htmlspecialchars(strip_tags($joueur['position']));  ?></p>
                         </div>
                    
                 <?php
