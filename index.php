@@ -23,7 +23,7 @@ $json = file_get_contents($url); //
 $equipes = json_decode($json); // decode un fichier string JSON en tableau d'objet PHP
 // var_dump($equipes);
 $totalPlayerByTeam = 0 ;
-
+   
 ?>
 
 <body>

@@ -1,4 +1,4 @@
--- CREATE DATABASE basketDB;
+CREATE DATABASE dbbasket;
 
 CREATE TABLE Equipes(
     EquipeID INT NOT NULL,
@@ -25,4 +25,9 @@ CREATE TABLE Joueurs(
 ALTER TABLE Equipes ENGINE=InnoDB;
 ALTER TABLE Joueurs ENGINE=InnoDB;
 
-CREATE TABLE Colors(Colors VARCHAR(255) NOT NULL);
+CREATE TABLE Colors(
+    Colors VARCHAR(255) NOT NULL,
+    ColorID INT NOT NULL,
+    PRIMARY KEY(ColorID),
+    FOREIGN KEY(Colors) REFERENCES Equipes(EquipeColors)
+    );
