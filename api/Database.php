@@ -14,8 +14,7 @@ public static function connect_db(){
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // stmt recupere tous les stands
-    // echo "Connected  a jojoworld successfully";
+    
   } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
   }
@@ -40,7 +39,7 @@ public static function createMigration( $listOfQueries){
 
 
 
-public static function insertData($joueurs,$equipes ){
+public static function insertData($joueurs,$equipes){
     try {
          $connexion= DataBase::connect_db();
          

@@ -32,10 +32,12 @@ $joueurs= DataBase::getAllPlayer();
                 <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>
                 <p> <strong> Localisation : <?php echo htmlspecialchars(strip_tags($equipe['localisation'])); ?><br>
                      Division :<?php echo htmlspecialchars(strip_tags($equipe['division'])); ?> <br>
-                    Date de création :<?php echo htmlspecialchars(strip_tags($equipe['creation'])); ?> <br>
-                    Couleurs des maillots : <?php foreach ($equipe->couleurs as $couleur){ echo htmlspecialchars(strip_tags($couleur." "));} ?> </strong></p> 
-                
-
+                    Date de création :<?php echo htmlspecialchars(strip_tags($equipe['creation'])); ?> <br></strong></p> 
+   
+                <?php
+                foreach($equipe->couleurs as $couleur){?>
+                     Couleurs des maillots : <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
+                     <?php } ?>
                
             </div>
         <?php } ?>
@@ -46,7 +48,3 @@ $joueurs= DataBase::getAllPlayer();
 </body>
 
 </html>
-<!-- "localisations": "Charlotte, North Carolina",
-    "division": "Southeast",
-    "creation": "1988",
-    "couleurs" -->

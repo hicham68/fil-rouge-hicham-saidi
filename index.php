@@ -90,6 +90,8 @@ $totalPlayerByTeam = 0 ;
 
 
             <a href="index2.php"><h3>Équipes</h3> </a>
+            <a href="index.php"><h3>Refresh</h3> </a>
+
             </div>
 </body>
 
