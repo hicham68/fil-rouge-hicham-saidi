@@ -28,7 +28,7 @@ $joueurs= DataBase::getAllPlayer();
     </header> 
     <?php
     foreach ($equipes as $equipe) {
-        $team_color = DataBase::getColorsByTeam($connexion,$equipe["id"]);  ?>
+        $team_color = DataBase::getColorsByTeam($equipe["id"]);  ?>
             <div class="teamName">
             <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
                 <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>

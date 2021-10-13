@@ -19,14 +19,13 @@ $connexion= DataBase::createMigration($SQL);
 // DECLARATION DES VARIABLES
 
 $joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/joueurs")); // decode un fichier string JSON en tableau d'objet PHP
-$equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); // decode un fichier string JSON en tableau d'objet PHP
-// var_dump($equipes);
+$equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); 
 
 
 $insertData = DataBase::insertData($joueurs,$equipes);
 $equipes = DataBase::getTeams();
 $joueurs= DataBase::getAllPlayer();
-// var_dump($equipes);
+
 
 $totalPlayerByTeam = 0 ;
    
@@ -37,15 +36,7 @@ $totalPlayerByTeam = 0 ;
         <header>
             <h1>Joueurs : </h1>
         </header>
-        <!-- {
-    "id": 12,
-    "nom": "Barea, J. J.",
-    "position": "G",
-    "No": 5,
-    "equipe": 6,
-    "taille": 1.83,
-    "poid": 84
-  }, -->
+
         <?php
         foreach ($equipes as $equipe) {  ?>
             <div>
