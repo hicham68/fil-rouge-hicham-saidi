@@ -14,7 +14,7 @@
 require_once("./migration/migration.php");
 require_once("./api/Database.php");
 
-$connexion= DataBase::createMigration($SQL);
+DataBase::createMigration($SQL);
 
 // DECLARATION DES VARIABLES
 
@@ -80,7 +80,7 @@ $totalPlayerByTeam = 0 ;
         <?php } ?>
 
 
-            <a href="index2.php"><h3>Équipes</h3> </a>
+            <a href="equipes.php"><h3>Équipes</h3> </a>
             <a href="index.php"><h3>Refresh</h3> </a>
 
             </div>
