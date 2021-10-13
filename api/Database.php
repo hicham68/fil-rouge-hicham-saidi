@@ -27,7 +27,7 @@ public static function createMigration( $listOfQueries){
     try {
         $connexion= DataBase::connect_db();
         // stmt recupere tous les stands
-        $stmt = $connexion->prepare( $query);
+        $stmt = $connexion->prepare($query);
         $stmt->execute();
         // $connexion = null;
         // echo "Connected  a jojoworld successfully";
@@ -43,7 +43,7 @@ public static function createMigration( $listOfQueries){
 public static function insertData($joueurs,$equipes ){
     try {
          $connexion= DataBase::connect_db();
-         // stmt recupere tous les stands
+         
          // AJOUTE LES EQUIPES :
          foreach($equipes as $equipe){
             $query = $connexion->prepare('INSERT IGNORE  INTO equipes(id, nom, localisation, division, creation, logo ) VALUES (:id, :nom, :localisation, :division , :creation,  :logo)');
@@ -144,89 +144,6 @@ public static function getPlayerByTeam($team){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-// public static function affichageStand(){
-  
-//   try {
-//     $connexion= DataBase::connect_db();
-//     // stmt recupere tous les stands
-//     $stmt = $connexion->prepare("SELECT * FROM `stand` WHERE 1");
-//     $stmt->execute();
-  
-//      // set the resulting array to associative
-//      $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//      $allJojoStands = array();
-//      foreach($stmt->fetchAll() as $v) { // $stmt->fetchAll() tableau associatif 
-      
-//       $nouveauStand= new Stand($v['modal_id'], // création de l'objet à partir du tableau associatif créer à partir de la base de donnée.
-//                               $v['name'],
-//                               $v['manieur'],
-//                               $v['image_miniature'],
-//                               $v['image_modal'],
-//                               $v['description'],
-//                               $v['premiere_apparition'],
-//                               $v['categorie']);
-//       $allJojoStands[] = $nouveauStand; // rajoute un nouvel objet dans le tableau 
-//      }
-//     // echo "Connected  a jojoworld successfully";
-//   } catch(PDOException $e) {
-//     echo "Connection failed: " . $e->getMessage();
-//   }
-
-//   return  $allJojoStands;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public static function createStand($data){
-
-  $connexion= DataBase::connect_db();
-
-  $randomString='gjkghqkgdqsdmqdj@_mooqhjdiquezgf46945314857';
-
-  $sql="INSERT INTO all_stands(modal_id,name,manieur,image_miniature,image_modal,description,premiere_apparition,categorie  ) values (?,?,?,?,?,?,?,?)";
-  $stmt=$connexion->prepare($sql);
-  $stmt->execute(array( str_shuffle($randomString),$data['name'], $data['manieur'], 'assets/img/portfolio/'.$data['img_miniature'], 'assets/img/portfolio/'.$data['img_modal'],$data['description'] , $data['premiere_apparition'],$data['categorie']));
-
-  
-  try {
-
-   echo "SUCCES de l'AJOU DANS  la base de donnée";
-  } catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-  }
-  
-
-}
 
 
 }

@@ -89,15 +89,6 @@ $totalPlayerByTeam = 0 ;
         <?php } ?>
 
 
-            <!--  
-   
-  echo " -->
-
-
-
-
-
-
             <a href="index2.php"><h3>Équipes</h3> </a>
             </div>
 </body>
