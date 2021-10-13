@@ -18,6 +18,7 @@
 $insertData = DataBase::insertData($joueurs,$equipes);
 $equipes = DataBase::getTeams();
 $joueurs= DataBase::getAllPlayer();
+
 ?>
 </head>
   <body>
@@ -26,7 +27,8 @@ $joueurs= DataBase::getAllPlayer();
        <h1 style="text-align: center;" >Équipes : </h1>
     </header> 
     <?php
-    foreach ($equipes as $equipe) {?>
+    foreach ($equipes as $equipe) {
+        $team_color = DataBase::getColorsByTeam($connexion,$equipe["id"]);  ?>
             <div class="teamName">
             <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
                 <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>
@@ -35,7 +37,8 @@ $joueurs= DataBase::getAllPlayer();
                     Date de création :<?php echo htmlspecialchars(strip_tags($equipe['creation'])); ?> <br></strong></p> 
    
                 <?php
-                foreach($equipe->couleurs as $couleur){?>
+                foreach($team_color as $couleur){
+                    ?>
                      Couleurs des maillots : <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
                      <?php } ?>
                

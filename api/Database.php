@@ -120,13 +120,25 @@ public static function getAllPlayer(){
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
-         echo "Get Teams error: " . $e->getMessage();
+         echo "Get all player error: " . $e->getMessage();
     }
-    
-    
+   } 
+    public static function getColorsByTeam($connexion,$equipes){
+
+      try {
+          $connexion= DataBase::connect_db();
+          $sql = "SELECT couleurs.couleur FROM couleurs INNER JOIN couleur_equipe ON couleur_equipe.id_couleur = couleurs.id INNER JOIN equipes ON equipes.id = couleur_equipe.id_equipe WHERE equipes.id = :equipe";
+          $query = $connexion->prepare($sql);
+          $query->bindValue(":equipe",$equipes,PDO::PARAM_INT);
+          $query->execute();
+          return $query->fetchAll(PDO::FETCH_ASSOC);     
+      } catch(PDOException $e) {
+           echo "Get colors error: " . $e->getMessage();
+      }
+      
 }
 
-
+/*
 public static function getPlayerByTeam($team){
 
     try {
@@ -141,7 +153,7 @@ public static function getPlayerByTeam($team){
     }
    
 }
-
+*/
 
 
 
