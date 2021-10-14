@@ -36,10 +36,12 @@ $joueurs= DataBase::getAllPlayer();
                      Division :<?php echo htmlspecialchars(strip_tags($equipe['division'])); ?> <br>
                     Date de création :<?php echo htmlspecialchars(strip_tags($equipe['creation'])); ?> <br></strong></p> 
    
-                <?php
-                foreach($team_color as $couleur){
+                
+                 <p>Couleurs des maillots :</p>
+              <?php  
+              foreach($team_color as $couleur){
                     ?>
-                     Couleurs des maillots : <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
+                     <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
                      <?php } ?>
                
             </div>

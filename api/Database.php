@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Short description for class
+ * class DataBAse qui permet de se connecter a la DB,
+ * D'insérer les données de l'API dans la DB,
+ * et enfin de récupérer les données de la DB
  *
- * Long description for class (if any)...
+ * 
  *
  * @copyright  2006 Zend Technologies
  * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
