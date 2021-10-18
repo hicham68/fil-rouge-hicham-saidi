@@ -1,7 +1,7 @@
 <?php
 
 /**
- * class DataBAse qui permet de se connecter a la DB,
+ * class DataBase qui permet de se connecter a la DB,
  * D'insérer les données de l'API dans la DB,
  * et enfin de récupérer les données de la DB
  *
@@ -11,30 +11,50 @@
  * @license    http://www.zend.com/license/3_0.txt   PHP License 3.0
  * @link       http://dev.zend.com/package/PackageName
  */ 
+
 class DataBase {
 
+  public static $firstConnexion = true;
+  
   public static function connect_db(){
 
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "basketdb";
-
-    try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-      // set the PDO error mode to exception
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      
-    } catch(PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+    
+    
+    if( DataBase::$firstConnexion == true ){
+      try {
+        $conn = new PDO("mysql:host=$servername;charset=utf8", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+      } catch(PDOException $e) {
+        echo " first Connection failed: " . $e->getMessage();
+      }
+     
     }
-    return  $conn ;
+    else {
+      try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      
+        } catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+        }
+        
+    }
+
+   DataBase::$firstConnexion = false; // la premiere connection c'est de
+    return  $conn; 
   }
 
   public static function createMigration( $listOfQueries){
     foreach($listOfQueries as $query){
       try {
-          $connexion= DataBase::connect_db();
+          $connexion= DataBase::connect_db(); // cest la que ca fait la premiere connection == false 
           // stmt recupere tous les stands
           $stmt = $connexion->prepare($query);
           $stmt->execute();
@@ -58,7 +78,7 @@ class DataBase {
    */
   public static function insertData($joueurs,$equipes){
       try {
-          $connexion= DataBase::connect_db();
+          $connexion= DataBase::connect_db(); // == true a partir de la 
           
           // AJOUTE LES EQUIPES :
           foreach($equipes as $equipe){
@@ -174,5 +194,3 @@ class DataBase {
 
 
 }
-
-?>

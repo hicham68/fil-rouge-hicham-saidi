@@ -14,7 +14,7 @@
 require_once("./migration/migration.php");
 require_once("./api/Database.php");
 
-DataBase::createMigration($SQL);
+DataBase::createMigration($SQL); // == false première requete ok ?
 
 // DECLARATION DES VARIABLES
 
@@ -22,7 +22,7 @@ $joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketb
 $equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); 
 
 
-$insertData = DataBase::insertData($joueurs,$equipes);
+$insertData = DataBase::insertData($joueurs,$equipes); // rtout ca s'est des requetes  lance a la suite les unes des autres 
 $equipes = DataBase::getTeams();
 $joueurs= DataBase::getAllPlayer();
 

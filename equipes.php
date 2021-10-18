@@ -10,7 +10,7 @@
     require_once("./migration/migration.php");
     require_once("./api/Database.php");
     
-    $connexion= DataBase::createMigration($SQL);
+    $connexion = DataBase::createMigration($SQL);
     $joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/joueurs")); // decode un fichier string JSON en tableau d'objet PHP
     $equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); // decode un fichier string JSON en tableau d'objet PHP
 // var_dump($equipes);
