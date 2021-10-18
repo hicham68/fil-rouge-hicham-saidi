@@ -55,11 +55,11 @@ class DataBase {
     foreach($listOfQueries as $query){
       try {
           $connexion= DataBase::connect_db(); // cest la que ca fait la premiere connection == false 
-          // stmt recupere tous les stands
+          // stmt recupere toutes les requetes sql
           $stmt = $connexion->prepare($query);
           $stmt->execute();
           // $connexion = null;
-          // echo "Connected  a jojoworld successfully";
+          
         } catch(PDOException $e) {
           echo "Migration error: " . $e->getMessage();
         }
