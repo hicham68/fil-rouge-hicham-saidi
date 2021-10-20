@@ -125,6 +125,60 @@ class DataBase {
               ));
           }
 
+           // AJOUTE LES Coach
+           
+            $query = $connexion->exec('INSERT  IGNORE INTO coach_equipe(id, nom, age, equipe) 
+            VALUES 
+           
+
+            (
+              1,
+              "James Borrego",
+              43,
+              1
+            ), 
+            
+            (
+              2,
+              "Ime Udoka",
+              44,
+              2
+            ),
+            
+            (
+              3,
+              "Phil Jackson",
+              76,
+              3
+            ),
+
+            
+
+            (
+              4,
+              "Erik Spoelstra",
+              50,
+              4
+            ),
+
+            (
+              5,
+              "Willie Green",
+              40,
+              5
+            ),
+
+            (
+              6,
+              "Jason Kidd",
+              48,
+              6
+            )
+            
+            
+           ');
+            
+
         
         } catch(PDOException $e) {
           echo "insertion in database error: " . $e->getMessage();

@@ -34,13 +34,25 @@ CREATE TABLE couleur_equipe (
     id_equipe INT NOT NULL
 );
 
+CREATE TABLE coach_equipe (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(400) NOT NULL,
+    age INT NOT NULL,
+    equipe INT
+);
+
+
 ALTER TABLE equipes AUTO_INCREMENT = 1;
 ALTER TABLE joueurs AUTO_INCREMENT = 1;
 ALTER TABLE couleurs AUTO_INCREMENT = 1;
+ALTER TABLE coach_equipe AUTO_INCREMENT = 1;
 
 ALTER TABLE couleur_equipe ADD PRIMARY KEY (id_couleur,id_equipe);
 
 ALTER TABLE joueurs
+ADD FOREIGN KEY (equipe) REFERENCES equipes(id);
+
+ALTER TABLE coach_equipe
 ADD FOREIGN KEY (equipe) REFERENCES equipes(id);
 
 ALTER TABLE couleur_equipe 
