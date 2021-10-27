@@ -12,7 +12,7 @@
     $itemCount = $stmt->rowCount();
 
 
-    echo json_encode($itemCount, JSON_PRETTY_PRINT);
+    // echo json_encode($itemCount, JSON_PRETTY_PRINT);
 
     if($itemCount > 0){
         

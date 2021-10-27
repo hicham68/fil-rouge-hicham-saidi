@@ -1,7 +1,5 @@
 <?php
     class Coach{
-
-    
        
         // Table
         private $db_table = "coach_equipe";
@@ -15,39 +13,46 @@
         
         // GET ALL
         public function getCoach(){
-            $connexion= DataBase::connect_db();
+
             $sqlQuery = "SELECT id, nom, age, equipe FROM " . $this->db_table . "";
-            $stmt = $connexion->prepare($sqlQuery);
-            $stmt->execute();
-            return $stmt;
+            $data= DataBase::getCoachDb( $sqlQuery);
+            return $data;
         }
 
         // CREATE
         public function createCoach(){
-            $connexion= DataBase::connect_db();
-            $sqlQuery = "INSERT INTO
-                        ". $this->db_table ."
-                    SET
-                        nom = :nom,  
-                        age = :age, 
-                        equipe = :equipe";
-        
-            $stmt = $connexion->prepare($sqlQuery);
-        
-            // sanitize
-            $this->nom=htmlspecialchars(strip_tags($this->nom));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->equipe=htmlspecialchars(strip_tags($this->equipe));
-        
-            // bind data
-            $stmt->bindParam(":nom", $this->nom);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":equipe", $this->equipe);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
+
+            try {
+                $connexion= DataBase::connect_db();
+                $sqlQuery = "INSERT INTO
+                            ". $this->db_table ."
+                        SET
+                            nom = :nom,  
+                            age = :age, 
+                            equipe = :equipe";
+            
+                $stmt = $connexion->prepare($sqlQuery);
+            
+                // sanitize
+                $this->nom=htmlspecialchars(strip_tags($this->nom));
+                $this->age=htmlspecialchars(strip_tags($this->age));
+                $this->equipe=htmlspecialchars(strip_tags($this->equipe));
+            
+                // bind data
+                $stmt->bindParam(":nom", $this->nom);
+                $stmt->bindParam(":age", $this->age);
+                $stmt->bindParam(":equipe", $this->equipe);
+            
+                if($stmt->execute()){
+                   return true;
+                }
+                return false;
+              } catch (PDOException $e) {
+                echo "Create Coatch error: " . $e->getMessage();
+              }
+
+
+           
         }
 
         // READ single

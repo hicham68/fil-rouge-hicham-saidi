@@ -1,11 +1,10 @@
 <?php
 
 $SQL = array(
-"DROP DATABASE IF EXISTS basketdb;
-CREATE DATABASE basketdb;
+"CREATE DATABASE IF NOT EXISTS basketdb;
 USE basketdb;",
     
-"CREATE TABLE equipes (
+"CREATE TABLE IF NOT EXISTS equipes (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nom VARCHAR(400) UNIQUE,
     localisation VARCHAR(400),
@@ -14,7 +13,7 @@ USE basketdb;",
     logo VARCHAR(400)
 );
 
-CREATE TABLE joueurs (
+CREATE TABLE IF NOT EXISTS joueurs (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nom VARCHAR(400) UNIQUE,
     position VARCHAR(400),
@@ -24,17 +23,17 @@ CREATE TABLE joueurs (
     poid INT(11)
 );
 
-CREATE TABLE couleurs (
+CREATE TABLE IF NOT EXISTS couleurs (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     couleur VARCHAR(400) NOT NULL UNIQUE
 );
 
-CREATE TABLE couleur_equipe (
+CREATE TABLE IF NOT EXISTS couleur_equipe (
     id_couleur INT NOT NULL,
     id_equipe INT NOT NULL
 );
 
-CREATE TABLE coach_equipe (
+CREATE TABLE IF NOT EXISTS coach_equipe (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nom VARCHAR(400) NOT NULL,
     age INT NOT NULL,
