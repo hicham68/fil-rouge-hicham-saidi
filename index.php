@@ -20,11 +20,9 @@ DataBase::createMigration($SQL); // == false première requete ok ?
 
 
  // decode un fichier string JSON en tableau d'objet PHP
-// $joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/joueurs"));
-// $equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); 
+ $joueurs = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/joueurs"));
+ $equipes = json_decode(file_get_contents("https://filrouge.uha4point0.fr/basketball/equipes")); 
 
-$joueurs = json_decode(file_get_contents("http://10.3.1.172:2222/basketball/joueurs"));
-$equipes = json_decode(file_get_contents("http://10.3.1.172:2222/basketball/equipes")); 
 
 
 $insertData = DataBase::insertData($joueurs,$equipes); // rtout ca s'est des requetes  lance a la suite les unes des autres 

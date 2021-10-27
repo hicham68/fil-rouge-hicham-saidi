@@ -19,14 +19,14 @@
         $coachArr = array();
         $coachArr["body"] = array();
         $coachArr["itemCount"] = $itemCount;
-
+        
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
                 "id" => $id,
-                "name" => $nom,
+                "nom" => $nom,
                 "age" => $age,
-                "created" => $equipe
+                "equipe" => $equipe
             );
 
             array_push($coachArr["body"], $e);
