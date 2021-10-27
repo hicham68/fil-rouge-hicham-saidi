@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maquette fil rouge</title>
     <link rel="stylesheet" href="./css/page_api2.css" />
+    
     <?php
     require_once("./migration/migration.php");
     require_once("./api/Database.php");
@@ -30,7 +31,7 @@ $joueurs= DataBase::getAllPlayer();
     foreach ($equipes as $equipe) {
         $team_color = DataBase::getColorsByTeam($equipe["id"]);  ?>
             <div class="teamName">
-            <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
+                <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
                 <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>
                 <p> <strong> Localisation : <?php echo htmlspecialchars(strip_tags($equipe['localisation'])); ?><br>
                      Division :<?php echo htmlspecialchars(strip_tags($equipe['division'])); ?> <br>
@@ -42,14 +43,27 @@ $joueurs= DataBase::getAllPlayer();
               foreach($team_color as $couleur){
                     ?>
                      <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
-                     <?php } ?>
-               
+                     <?php } ?> <br>
+               <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
             </div>
         <?php } ?>
     
         <a href="index.php" class="linkPage2"><h3>Joueurs</h3></a>
 </div>
-
+<script src="./Js/modal.js"></script>
 </body>
 
 </html>
