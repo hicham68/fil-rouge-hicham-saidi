@@ -33,6 +33,32 @@ $joueurs= DataBase::getAllPlayer();
             <div class="teamName">
                 <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
                 <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>
+              
+               <!-- Trigger/Open The Modal -->
+               <br>
+<button id=" <?php echo htmlspecialchars(strip_tags('myBtn'. $equipe["id"])); ?>" onclick="changeModalStatut(<?php echo htmlspecialchars(strip_tags($equipe['id'])); ?>)">Afficher les informations sur <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> </button>
+
+
+
+            </div>
+        <?php } ?>
+    
+        <a href="index.php" class="linkPage2"><h3>Joueurs</h3></a>
+</div>
+<!-- The Modal -->
+
+<?php
+  foreach ($equipes as $equipe) { 
+      ?>
+    <div id="<?php echo htmlspecialchars(strip_tags('myModal'. $equipe["id"]));?>" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" id="<?php echo htmlspecialchars(strip_tags('close'. $equipe["id"]));?>">&times;</span>
+        <p>Some text in the Modal.. <?php echo htmlspecialchars(strip_tags('myModal'. $equipe["id"]));?> </p>
+
+        <div class="teamName" >
+                <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
+                <img src="<?php echo htmlspecialchars(strip_tags($equipe['logo'])); ?>"/>
                 <p> <strong> Localisation : <?php echo htmlspecialchars(strip_tags($equipe['localisation'])); ?><br>
                      Division :<?php echo htmlspecialchars(strip_tags($equipe['division'])); ?> <br>
                     Date de création :<?php echo htmlspecialchars(strip_tags($equipe['creation'])); ?> <br></strong></p> 
@@ -45,24 +71,22 @@ $joueurs= DataBase::getAllPlayer();
                      <?php  echo htmlspecialchars(strip_tags($couleur['couleur'])); ?> 
                      <?php } ?> <br>
                <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div>
 
             </div>
-        <?php } ?>
-    
-        <a href="index.php" class="linkPage2"><h3>Joueurs</h3></a>
-</div>
+            <div class="teamName" id="<?php echo htmlspecialchars(strip_tags('coach'. $equipe["id"]));?>" >
+                <!-- INFO API COATCH FROM JAVASCRIPT -->
+
+            </div>
+
+
+      </div>
+    </div>
+
+  <?php
+
+ 
+    }
+      ?>
 <script src="./Js/modal.js"></script>
 </body>
 
