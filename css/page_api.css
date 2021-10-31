@@ -43,3 +43,10 @@ h2 {
 hr {
     border: 5px solid black;
 }
+
+a.pagination{
+    
+    margin-left: 50px;
+    padding-left: 100px;
+    
+}

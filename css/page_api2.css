@@ -41,7 +41,11 @@ img {
 }
 
 
+.activated{
+  color: white;
+  background-color: #4CAF50 !important;
 
+}
 
 
 /* The Modal (background) */
@@ -82,3 +86,9 @@ img {
     text-decoration: none;
     cursor: pointer;
   }
+  a.pagination{
+    
+    margin-left: 50px;
+    padding-left: 100px;
+    
+}

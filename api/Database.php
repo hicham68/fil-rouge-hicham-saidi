@@ -181,18 +181,58 @@ class DataBase
 
   public static function getTeams()
   {
-
+    
     try {
+      // Récupere les équipes
       $connexion = self::connect_db();
       $sql = "SELECT * FROM equipes";
       $query = $connexion->prepare($sql);
       $query->execute();
-      return $query->fetchAll(PDO::FETCH_ASSOC);
+      $data = $query->fetchAll(PDO::FETCH_ASSOC);
+      $connexion = null;
+      return $data;
+      
     } catch (PDOException $e) {
       echo "Get Teams error: " . $e->getMessage();
     }
+      
   }
 
+  public static function getTeamsByPage($page, $rowsByPage)
+  {
+    try{
+     
+      $start_from = ($page-1) * $rowsByPage; // Permet de calculer la ligne de la premiere equipe affichée
+      //Récupere le nombre d'equipes
+      $connexion= self::connect_db();
+      # Retrieve rows 6-15
+      $count=$connexion->prepare("SELECT * FROM equipes LIMIT $start_from, $rowsByPage");
+      $count->setFetchMode(PDO::FETCH_ASSOC);
+      $count->execute();
+      $data = $count->fetchAll();
+      $connexion = null;
+      return $data;
+     
+    
+    } catch(PDOException $e){
+      echo "Get number Teams error: " . $e->getMessage();
+    }
+      
+  }
+
+  public static function countAllTeams(): int
+  {
+    try{
+      //Récupere le nombre d'equipes
+      $connexion= self::connect_db();
+      $count=$connexion->prepare("SELECT COUNT(*) FROM equipes");
+      $count->execute();
+      return $count->fetchColumn();
+    
+    } catch(PDOException $e){
+      echo "Get number Teams error: " . $e->getMessage();
+    }
+  }
 
   public static function getAllPlayer()
   {
@@ -207,6 +247,7 @@ class DataBase
       echo "Get all player error: " . $e->getMessage();
     }
   }
+
 
   public static function getCoachDb($sql)
   {

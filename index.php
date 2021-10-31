@@ -31,6 +31,7 @@ $joueurs= DataBase::getAllPlayer();
 
 
 $totalPlayerByTeam = 0 ;
+$joueurs= DataBase::getAllPlayer();
    
 ?>
 
@@ -81,8 +82,9 @@ $totalPlayerByTeam = 0 ;
 
            
         <?php } ?>
-
-
+        
+      
+        
             <a href="equipes.php"><h3>Équipes</h3> </a>
             <a href="index.php"><h3>Refresh</h3> </a>
 

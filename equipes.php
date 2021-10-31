@@ -17,8 +17,29 @@
 // var_dump($equipes);
 
 $insertData = DataBase::insertData($joueurs,$equipes);
-$equipes = DataBase::getTeams();
-$joueurs= DataBase::getAllPlayer();
+
+
+
+/// Recupère le nombre d'Equipe enregistrée en database
+   // Pagination
+
+  $rowsByPage=3;
+  $pageNumber=ceil(DataBase::countAllTeams()/$rowsByPage); // calcule le nombre de page en fonction du nombre d'équipe enregistrées
+  // var_dump(($pageNumber . "  : ". DataBase::countAllTeams()));
+   if(isset($_GET["page"])){
+    $page=$_GET["page"];
+   }
+   else{
+     $page=1; // par default
+   }
+
+  //  $equipes = DataBase::getTeams();
+  
+   $equipes = DataBase::getTeamsByPage($page, $rowsByPage);
+   $joueurs= DataBase::getAllPlayer();
+//    $debut=($page-1)*$rowsByPage;
+
+  
 
 ?>
 </head>
@@ -42,7 +63,26 @@ $joueurs= DataBase::getAllPlayer();
 
             </div>
         <?php } ?>
-    
+        <?php
+       
+        ?>
+        <?php
+        echo "<div  class='teamName'> ";
+        for($i=1;$i<=$pageNumber;$i++){
+          if($page == $i){
+            $activeClass="activated";
+          }
+          else{
+            $activeClass="";
+          }
+            
+            echo "<a  href='?page=$i' ><button class='pagination $activeClass '  >$i</button> </a>";
+
+        } 
+        echo "</div>";
+        ?>
+
+
         <a href="index.php" class="linkPage2"><h3>Joueurs</h3></a>
 </div>
 <!-- The Modal -->
@@ -83,9 +123,7 @@ $joueurs= DataBase::getAllPlayer();
     </div>
 
   <?php
-
- 
-    }
+  }
       ?>
 <script src="./Js/modal.js"></script>
 </body>
