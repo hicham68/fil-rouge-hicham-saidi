@@ -30,11 +30,11 @@ function changeModalStatut(id){
 }
 
 
-
+// Get APIcoach Info and put in the modal
 
 function getApi(id) { 
 
-  fetch("http://localhost/fil_rouge_hicham_saidi/api/single_read.php?id=" + id)
+  fetch("/fil_rouge_hicham_saidi/api/single_read.php?id=" + id)
        .then(function(reponse){
            return reponse.json()
        })

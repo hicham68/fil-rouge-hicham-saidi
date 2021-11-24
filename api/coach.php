@@ -66,7 +66,7 @@
                       FROM
                         ". $this->db_table ."
                     WHERE 
-                       id = ?
+                       equipe = ?
                     LIMIT 0,1";
 
             $stmt = $connexion->prepare($sqlQuery);

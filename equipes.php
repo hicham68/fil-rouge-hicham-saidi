@@ -91,10 +91,10 @@ $insertData = DataBase::insertData($joueurs,$equipes);
   foreach ($equipes as $equipe) { 
       ?>
     <div id="<?php echo htmlspecialchars(strip_tags('myModal'. $equipe["id"]));?>" class="modal">
-      <!-- Modal content -->
+      <!-- Modal content INFO API equipes and joueurs -->
       <div class="modal-content">
         <span class="close" id="<?php echo htmlspecialchars(strip_tags('close'. $equipe["id"]));?>">&times;</span>
-        <p>Some text in the Modal.. <?php echo htmlspecialchars(strip_tags('myModal'. $equipe["id"]));?> </p>
+       
 
         <div class="teamName" >
                 <h2> <?php echo htmlspecialchars(strip_tags($equipe['nom'])); ?> :</h2> 
@@ -114,7 +114,7 @@ $insertData = DataBase::insertData($joueurs,$equipes);
 
             </div>
             <div class="teamName" id="<?php echo htmlspecialchars(strip_tags('coach'. $equipe["id"]));?>" >
-                <!-- INFO API COATCH FROM JAVASCRIPT -->
+                <!-- Modal content INFO API COATCH FROM JAVASCRIPT -->
 
             </div>
 
@@ -125,6 +125,7 @@ $insertData = DataBase::insertData($joueurs,$equipes);
   <?php
   }
       ?>
+      <!-- The Modal -->
 <script src="./Js/modal.js"></script>
 </body>
 
